@@ -17,7 +17,7 @@
   <version>0.0.1-SNAPSHOT</version>
 
   <properties>
-    <java.version>11</java.version>
+    <java.version>1.8</java.version>
     <kotlin.version>1.3.70</kotlin.version>
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
   </properties>
@@ -74,6 +74,19 @@
         <artifactId>spring-boot-maven-plugin</artifactId>
         <configuration>
           <executable>true</executable>
+          <image>
+            <!-- wtf? begin -->
+            <!--<builder>cloudfoundry/cnb</builder>-->
+            <!--<builder>openjdk:8-jdk-alpine</builder>-->
+            <!--<builder>cloudfoundry/cnb:bionic</builder>-->
+            <!-- wtf? end -->
+            <env>
+              <!-- where are list of available versions for use? -->
+              <!--<BP_JAVA_VERSION>1.8.192</BP_JAVA_VERSION>--><!-- nope.. -->
+              <!--<BP_JAVA_VERSION>1.8.0.242</BP_JAVA_VERSION>--><!-- nope.. -->
+              <BP_JAVA_VERSION>8.0.242</BP_JAVA_VERSION><!-- found! -->
+            </env>
+          </image>
         </configuration>
         <executions>
           <execution>
